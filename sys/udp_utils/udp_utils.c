@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+#include "udp_utils.h"
 #include "net/gnrc.h"
 #include "net/gnrc/ipv6.h"
 #include "net/gnrc/udp.h"
 #include "net/gnrc/pktdump.h"
+#include "net/gnrc/nettype.h"
 #include "timex.h"
 #include "xtimer.h"
 
 static gnrc_netreg_entry_t server = { NULL, GNRC_NETREG_DEMUX_CTX_ALL, KERNEL_PID_UNDEF };
 
-
-static void send(char *addr_str, char *port_str, char *data, unsigned int num,
+void send(char *addr_str, char *port_str, char *data, unsigned int num,
                  unsigned int delay)
 {
     uint16_t port;
@@ -68,7 +69,7 @@ static void send(char *addr_str, char *port_str, char *data, unsigned int num,
     }
 }
 
-static void start_server(char *port_str)
+void start_server(char *port_str)
 {
     uint16_t port;
 
@@ -91,7 +92,7 @@ static void start_server(char *port_str)
     printf("Success: started UDP server on port %" PRIu16 "\n", port);
 }
 
-static void stop_server(void)
+void stop_server(void)
 {
     /* check if server is running at all */
     if (server.pid == KERNEL_PID_UNDEF) {
