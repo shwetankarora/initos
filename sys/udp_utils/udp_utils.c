@@ -12,6 +12,10 @@
 
 static gnrc_netreg_entry_t server = { NULL, GNRC_NETREG_DEMUX_CTX_ALL, KERNEL_PID_UNDEF };
 
+void pp(void){
+    printf("dhdncwlaa");
+}
+
 void send(char *addr_str, char *port_str, char *data, unsigned int num,
                  unsigned int delay)
 {

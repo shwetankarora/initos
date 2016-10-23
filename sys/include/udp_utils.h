@@ -10,4 +10,6 @@ extern void stop_server(void);
 
 extern int udp_cmd(int argc, char **argv);
 
+extern void pp(void);
+
 #endif
